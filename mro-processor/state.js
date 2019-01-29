@@ -80,14 +80,18 @@ class MROStore {
             Object.assign(stateEntries, data)
             if(stateEntries[address].toString()) {
                 var entries = JSON.parse(stateEntries[address])
-                entries["id"] = id
-                var newEntries = {}
-                newEntries[address] = Buffer.from(JSON.stringify(entries))
-                return this.context.setState(newEntries, this.timeout). then(function(result) {
-                    console.log("successfully added certificate ", result);
-                }).catch(function(error) {
-                    console.log("Error: ",error)
-                });
+                if(entries["status"] == "listed") {
+                    entries["id"] = id
+                    var newEntries = {}
+                    newEntries[address] = Buffer.from(JSON.stringify(entries))
+                    return this.context.setState(newEntries, this.timeout). then(function(result) {
+                        console.log("Asset owner updated ", result);
+                    }).catch(function(error) {
+                        console.log("Error: ",error)
+                    });
+                } else {
+                    return console.log("Asset is not listed")
+                }
             } else {
                 return console.log("Asset not present")
             }
