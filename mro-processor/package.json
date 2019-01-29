@@ -1,0 +1,21 @@
+{
+  "name": "mro",
+  "version": "1.0.0",
+  "description": "MRO application",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "Akash",
+  "license": "ISC",
+  "dependencies": {
+    "cbor": "^4.1.4",
+    "crypto": "^1.0.1",
+    "dotenv": "^5.0.1",
+    "google-protobuf": "^3.5.0",
+    "lodash": "^4.17.11",
+    "protobufjs": "^6.8.8",
+    "request": "^2.88.0",
+    "sawtooth-sdk": "latest"
+  }
+}
